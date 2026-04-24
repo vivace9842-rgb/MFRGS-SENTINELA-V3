@@ -1,1 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentinela V3 - MFRGS Inovações</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <div class="dashboard">
+        <header>
+            <h1>Sentinela V3 — MFRGS Inovações</h1>
+            <div class="status-bar">Supervisor: <strong>Gilberto Santos</strong> | SISTEMA ATIVO</div>
+        </header>
+        
+        <section class="metrics">
+            <div class="card">Total Leads: <span id="total-leads">80</span></div>
+            <div class="card highlights">Entradas Hoje: <span id="today-leads">22</span></div>
+            <div class="card warning">Aguardando: <span id="waiting-leads">19</span></div>
+        </section>
 
+        <section class="operation-focus">
+            <h2>Operação Jequié — Foco em Conversão</h2>
+            <table id="leads-table">
+                <thead>
+                    <tr>
+                        <th>Empresa</th>
+                        <th>Responsável</th>
+                        <th>Status</th>
+                        <th>Ação Estratégica</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    </tbody>
+            </table>
+        </section>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
