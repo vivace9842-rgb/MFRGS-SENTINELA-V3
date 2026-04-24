@@ -1,42 +1,40 @@
+
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://*.supabase.co https://generativelanguage.googleapis.com; script-src 'self' https://cdn.jsdelivr.net https://generativelanguage.googleapis.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sentinela V3 - MFRGS Inovações</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Agente Beatriz - Teste</title>
+    
+    <!-- Favicon vazio pra matar o erro 404 -->
+    <link rel="icon" href="data:,">
+    
+    <!-- Supabase CDN - carrega ANTES do seu script e SÓ UMA VEZ -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <!-- Seu script principal - 'defer' garante que roda depois do DOM -->
+    <script src="script.js" defer></script>
+    
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            background: #0f172a; 
+            color: #e2e8f0; 
+            padding: 40px; 
+        }
+        #status { 
+            padding: 20px; 
+            border: 2px solid #334155; 
+            border-radius: 8px; 
+            margin-top: 20px;
+        }
+        .ok { border-color: #22c55e; }
+        .erro { border-color: #ef4444; }
+    </style>
 </head>
 <body>
-    <div class="dashboard">
-        <header>
-            <h1>Sentinela V3 — MFRGS Inovações</h1>
-            <div class="status-bar">Supervisor: <strong>Gilberto Santos</strong> | <span id="sys-status" style="color: #d4af37;">INICIALIZANDO...</span></div>
-        </header>
-        
-        <section class="metrics">
-            <div class="card">Total Leads: <span id="total-leads">80</span></div>
-            <div class="card highlights">Entradas Hoje: <span id="today-leads">22</span></div>
-            <div class="card warning">Aguardando: <span id="waiting-leads">19</span></div>
-        </section>
-
-        <section class="operation-focus">
-            <h2>Operação Jequié — Foco em Conversão</h2>
-            <table id="leads-table">
-                <thead>
-                    <tr>
-                        <th>Empresa</th>
-                        <th>Responsável</th>
-                        <th>Status</th>
-                        <th>Ação Estratégica</th>
-                    </tr>
-                </thead>
-                <tbody id="leads-body">
-                    </tbody>
-            </table>
-        </section>
-    </div>
-    <script src="script.js"></script>
+    <h1>Agente Beatriz - Ambiente de Teste</h1>
+    <p>Abre o Console do navegador com F12 pra ver os logs.</p>
+    <div id="status">Aguardando inicialização...</div>
 </body>
 </html>
