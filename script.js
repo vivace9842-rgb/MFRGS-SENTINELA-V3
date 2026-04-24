@@ -1,58 +1,42 @@
-/**
- * SISTEMA UNIFICADO - MFRGS INOVAÇÕES
- * Protocolo de Segurança e Soberania Digital
- */
+/* SISTEMA MFRGS - VERSÃO ESTÁVEL E UNIFICADA
+   Sem redundâncias, sem erros de declaração.
+*/
 
 (function() {
-    // 1. CONFIGURAÇÕES TÉCNICAS (Substitua pelos seus dados reais)
-    const CONFIG = {
-        URL: 'https://asblzyihnmnkmfitprcx.supabase.co',
-        KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFzYmx6eWlobm1ua21maXRwcmN4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY4MDcyNjgsImV4cCI6MjA5MjM4MzI2OH0.MuXquTfO9WQTwWs85Lh7is9wVFHV7x1si_M2JxAZiYc'
-    };
+    "use strict";
 
-    // 2. INICIALIZAÇÃO SEGURA (Evita o erro "already been declared")
-    // Usamos um escopo fechado para proteger a variável 'supabase'
-    let supabase;
-    try {
-        if (typeof window.supabaseClient === 'undefined') {
-            window.supabaseClient = supabasejs.createClient(CONFIG.URL, CONFIG.KEY);
+    // Substitua pelos seus dados reais
+    const URL_PROJETO = 'https://asblzyihnmnkmfitprcx.supabase.co';
+    const CHAVE_PROJETO = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFzYmx6eWlobm1ua21maXRwcmN4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY4MDcyNjgsImV4cCI6MjA5MjM4MzI2OH0.MuXquTfO9WQTwWs85Lh7is9wVFHV7x1si_M2JxAZiYc';
+
+    // VERIFICAÇÃO DE SEGURANÇA: Só declara se já não existir no objeto window
+    if (!window.supabase) {
+        try {
+            window.supabase = supabase.createClient(URL_PROJETO, CHAVE_PROJETO);
+            console.log("✅ Conexão com Supabase estabelecida.");
+        } catch (e) {
+            console.error("❌ Erro na conexão:", e.message);
         }
-        supabase = window.supabaseClient;
-        console.log("✅ Sistema de dados inicializado com sucesso.");
-    } catch (error) {
-        console.error("❌ Falha crítica na inicialização:", error);
     }
 
-    // 3. NÚCLEO DE FUNÇÕES (Sem 'eval' ou strings em timers - Proteção CSP)
-    const App = {
-        async executarAcao(tabela, dados) {
-            try {
-                const { data, error } = await supabase
-                    .from(tabela)
-                    .insert([dados]);
-                
-                if (error) throw error;
-                return { sucesso: true, data };
-            } catch (err) {
-                return { sucesso: false, erro: err.message };
-            }
+    // NÚCLEO DO SISTEMA (Tudo o que o sistema faz fica aqui dentro)
+    const Sistema = {
+        async salvarDados(tabela, objeto) {
+            const { data, error } = await window.supabase.from(tabela).insert([objeto]);
+            if (error) return console.error("Erro ao salvar:", error);
+            return data;
         },
-
-        // Exemplo de Timer seguro para CSP
-        notificar(mensagem) {
-            // Usamos arrow function () => em vez de string para evitar bloqueio do navegador
-            setTimeout(() => {
-                alert(mensagem);
-            }, 500);
+        
+        init() {
+            console.log("🚀 Sistema pronto e operacional.");
+            // Seus gatilhos de botão e funções entram aqui
         }
     };
 
-    // 4. INICIALIZAÇÃO DA INTERFACE (DOM)
-    document.addEventListener('DOMContentLoaded', () => {
-        console.log("🚀 Interface carregada e protegida.");
-        // Coloque aqui os seus ouvintes de clique e interações
-    });
+    // Inicializa quando o documento estiver pronto
+    document.addEventListener('DOMContentLoaded', Sistema.init);
+    
+    // Disponibiliza o Sistema para uso global sem conflitos
+    window.AppMFRGS = Sistema;
 
-    // Torna o App acessível de forma controlada se necessário
-    window.MeuProjetoAI = App;
 })();
