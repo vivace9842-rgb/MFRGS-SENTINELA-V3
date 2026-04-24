@@ -2,6 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://*.supabase.co https://generativelanguage.googleapis.com; script-src 'self' https://cdn.jsdelivr.net https://generativelanguage.googleapis.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sentinela V3 - MFRGS Inovações</title>
     <link rel="stylesheet" href="style.css">
@@ -11,7 +12,7 @@
     <div class="dashboard">
         <header>
             <h1>Sentinela V3 — MFRGS Inovações</h1>
-            <div class="status-bar">Supervisor: <strong>Gilberto Santos</strong> | SISTEMA ATIVO</div>
+            <div class="status-bar">Supervisor: <strong>Gilberto Santos</strong> | <span id="sys-status" style="color: #d4af37;">INICIALIZANDO...</span></div>
         </header>
         
         <section class="metrics">
@@ -31,7 +32,7 @@
                         <th>Ação Estratégica</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="leads-body">
                     </tbody>
             </table>
         </section>
